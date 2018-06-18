@@ -1,0 +1,14 @@
+/.settings
+/.project
+/auth-service-domain/.settings
+/auth-service-domain/.project
+/auth-service-domain/.classpath
+/auth-service-main/.project
+/auth-service-main/.settings
+/auth-service-main/.classpath
+/auth-service-rp/.project
+/auth-service-rp/.settings
+/auth-service-rp/.classpath
+/auth-service-util/.project
+/auth-service-util/.settings
+/auth-service-util/.classpath
