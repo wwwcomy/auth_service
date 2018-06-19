@@ -42,7 +42,7 @@ public class AuthenticationController {
 	public TokenWrapper Authenticate(@RequestBody User user, HttpServletResponse response) {
 		logger.info("Authenticating User");
 		String userName = user.getName();
-		User existingUser = userRepository.findByName(userName);
+		User existingUser = userRepository.findByMail(userName);
 		if (null == existingUser) {
 			logger.error("User not exist");
 			throw new AuthenticationException("User failed to authenticate");

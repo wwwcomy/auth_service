@@ -41,7 +41,7 @@ public class UserService {
 	 * @return the user found
 	 */
 	public User findUser(String userName) {
-		User user = userRepository.findByName(userName);
+		User user = userRepository.findByMail(userName);
 		if (user == null) {
 			throw new EntityNotFoundException("User not found");
 		}
@@ -57,7 +57,7 @@ public class UserService {
 	 * @return the user found or NULL
 	 */
 	public User findByName(String userName) {
-		return userRepository.findByName(userName);
+		return userRepository.findByMail(userName);
 	}
 
 	public User findByMail(String mail) {

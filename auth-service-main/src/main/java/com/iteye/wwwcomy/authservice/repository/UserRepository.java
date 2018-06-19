@@ -8,10 +8,8 @@ import com.iteye.wwwcomy.authservice.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 
-    User findByName(String name);
+	User findByMailAndHashedPassword(String mail, String password);
 
-    User findByNameAndHashedPassword(String name, String password);
-
-    User findByMail(String mail);
+	User findByMail(String mail);
 
 }

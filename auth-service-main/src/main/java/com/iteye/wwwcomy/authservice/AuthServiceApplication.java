@@ -2,20 +2,27 @@ package com.iteye.wwwcomy.authservice;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.stereotype.Component;
 
+import com.iteye.wwwcomy.authservice.entity.Role;
+import com.iteye.wwwcomy.authservice.entity.User;
 import com.iteye.wwwcomy.authservice.service.CharPasswordPolicyFilter;
 import com.iteye.wwwcomy.authservice.service.LengthPasswordPolicyFilter;
 import com.iteye.wwwcomy.authservice.service.NumberPasswordPolicyFilter;
 import com.iteye.wwwcomy.authservice.service.PasswordPolicyFilterChain;
+import com.iteye.wwwcomy.authservice.service.RoleService;
+import com.iteye.wwwcomy.authservice.service.UserService;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
@@ -73,6 +80,23 @@ public class AuthServiceApplication {
 		Contact contact = new Contact("wwwcomy", "", "wwwcomy@gmail.com");
 		return new ApiInfoBuilder().title("AuthService").description("Authentication & Authorization Service")
 				.contact(contact).version("1.0").build();
+	}
+
+}
+
+@Component
+class DummyDataClr implements CommandLineRunner {
+
+	@Autowired
+	UserService us;
+	@Autowired
+	RoleService rs;
+
+	@Override
+	public void run(String... arg0) throws Exception {
+		Stream.of("admin@admin.com").forEach(userName -> this.us.save(new User(userName, "password")));
+		Stream.of("ADMIN", "SUPER_ADMIN", "USER").forEach(roleName -> this.rs.save(new Role(roleName)));
+		us.addRoleToUser("admin@admin.com", "ADMIN,SUPER_ADMIN,USER");
 	}
 
 }

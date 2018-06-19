@@ -34,8 +34,6 @@ public class User extends BasePersistedObject implements Principal {
 	public static final String PASSWORD_COL = "PASSWORD";
 
 	@NotBlank(message = "Cannot be empty")
-	private String name;
-	@NotBlank(message = "Cannot be empty")
 	@Email(message = "Wrong e-mail format")
 	private String mail;
 	@JsonProperty(access = Access.WRITE_ONLY)
@@ -54,12 +52,12 @@ public class User extends BasePersistedObject implements Principal {
 	public User() {
 	}
 
-	public User(String name) {
-		this(name, "");
+	public User(String mail) {
+		this(mail, "");
 	}
 
-	public User(String name, String password) {
-		this.name = name;
+	public User(String mail, String password) {
+		this.mail = mail;
 		if (password == null) {
 			password = "";
 		}
@@ -87,15 +85,6 @@ public class User extends BasePersistedObject implements Principal {
 	}
 
 	@Column(unique = true)
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Column(unique = true)
 	public String getMail() {
 		return mail;
 	}
@@ -106,7 +95,7 @@ public class User extends BasePersistedObject implements Principal {
 
 	@Override
 	public String toString() {
-		return "User [id=" + getId() + ", name=" + name + "]";
+		return "User [id=" + getId() + ", mail=" + mail + "]";
 	}
 
 	@Transient
@@ -221,5 +210,12 @@ public class User extends BasePersistedObject implements Principal {
 			return false;
 		}
 		return roles.remove(existingRole);
+	}
+
+	@Override
+	@Transient
+	@JsonIgnore
+	public String getName() {
+		return mail;
 	}
 }
