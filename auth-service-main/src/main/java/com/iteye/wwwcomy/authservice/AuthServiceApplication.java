@@ -3,8 +3,8 @@ package com.iteye.wwwcomy.authservice;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,7 +34,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @EnableJpaAuditing
 public class AuthServiceApplication {
-	private final static Log LOGGER = LogFactory.getLog(AuthServiceApplication.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(AuthServiceApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(AuthServiceApplication.class, args);

@@ -3,8 +3,8 @@ package com.iteye.wwwcomy.authservice.controller;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +22,7 @@ import com.iteye.wwwcomy.authservice.service.TokenService;
 @RequestMapping(value = "/authenticate")
 public class AuthenticationController {
 
-	private final Log logger = LogFactory.getLog(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Value("${authservice.token.cookie.key:token}")
 	private String tokenCookieKey;

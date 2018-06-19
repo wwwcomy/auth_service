@@ -1,7 +1,7 @@
 package com.iteye.wwwcomy.authservice.rp.preauth;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -17,7 +17,7 @@ import com.iteye.wwwcomy.authservice.service.rp.TokenValidationService;
 @Component
 public class PreAuthenticationManager implements AuthenticationManager {
 
-	private final Log logger = LogFactory.getLog(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
 	private TokenValidationService tokenService;
