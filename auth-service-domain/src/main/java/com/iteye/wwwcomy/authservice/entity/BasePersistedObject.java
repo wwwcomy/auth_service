@@ -3,6 +3,7 @@ package com.iteye.wwwcomy.authservice.entity;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -14,6 +15,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -28,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
  *
  */
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public abstract class BasePersistedObject {
 
     @JsonProperty(access = Access.READ_ONLY)
