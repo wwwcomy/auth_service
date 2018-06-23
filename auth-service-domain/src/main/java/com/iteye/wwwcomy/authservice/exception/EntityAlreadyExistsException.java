@@ -13,4 +13,8 @@ public class EntityAlreadyExistsException extends RuntimeException {
 	public EntityAlreadyExistsException(String s) {
 		super(s);
 	}
+
+	public EntityAlreadyExistsException(String s, Throwable e) {
+		super(s, e);
+	}
 }

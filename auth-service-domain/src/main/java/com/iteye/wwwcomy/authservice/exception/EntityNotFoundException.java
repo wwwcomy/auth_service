@@ -13,4 +13,8 @@ public class EntityNotFoundException extends RuntimeException {
 	public EntityNotFoundException(String s) {
 		super(s);
 	}
+
+	public EntityNotFoundException(String s, Throwable e) {
+		super(s, e);
+	}
 }

@@ -10,11 +10,15 @@ package com.iteye.wwwcomy.authservice.exception;
 @SuppressWarnings("serial")
 public class SysInternalException extends RuntimeException {
 
-    public SysInternalException() {
-    }
+	public SysInternalException() {
+	}
 
-    public SysInternalException(String s) {
-        super(s);
-    }
+	public SysInternalException(String s) {
+		super(s);
+	}
+
+	public SysInternalException(String s, Throwable e) {
+		super(s, e);
+	}
 
 }
